@@ -1,0 +1,37 @@
+.slider {
+  &__item {
+    max-width: 400px;
+    margin-top: 200px;
+  }
+
+  &__year {
+    font-size: 25px;
+    font-family: "BebasNeue", sans-serif;
+    font-weight: 400;
+    line-height: 120%;
+    color: #3877ee;
+    margin-bottom: 15px;
+  }
+
+  &__descr {
+    font-size: 20px;
+    line-height: 30px;
+    color: #42567a;
+  }
+
+  &__current {
+    position: absolute;
+    top: 65px;
+    font-size: 14px;
+    color: #42567a;
+  }
+
+  &__btns {
+    position: absolute;
+    top: 100px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
+  }
+}
