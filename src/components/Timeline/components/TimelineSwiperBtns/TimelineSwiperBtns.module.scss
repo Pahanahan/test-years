@@ -27,3 +27,11 @@
   background: transparent;
   cursor: auto;
 }
+
+@media (max-width: 756px) {
+  .prev-btn,
+  .next-btn {
+    width: 25px;
+    height: 25px;
+  }
+}

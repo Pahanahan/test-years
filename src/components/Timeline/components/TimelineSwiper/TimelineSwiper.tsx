@@ -1,7 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import { Swiper as SwiperType } from "swiper/types";
 import "swiper/css";
 import "swiper/css/navigation";
 
+import { useGetWidthWindow } from "../../../../castomHooks/useGetWidthWindow";
 import {
   SlideNextButton,
   SlidePrevButton,
@@ -27,6 +30,11 @@ function TimelineSwiper({
   const disabledNext = onActiveIndex >= categoriesLength - 1 ? true : false;
   const disabledPrev = onActiveIndex <= 0 ? true : false;
 
+  const windowWidth: number = useGetWidthWindow();
+
+  const currentSlides: number = windowWidth >= 1200 ? 3 : 2;
+  const gapSlides: number = windowWidth >= 1200 ? 80 : 40;
+
   const timelineDataMap = timelineDataCategoryItems.flatMap((item) => {
     return item.events.map((event) => {
       return (
@@ -44,9 +52,16 @@ function TimelineSwiper({
   return (
     <Swiper
       className={styles["slider"]}
-      spaceBetween={80}
-      slidesPerView={3}
-      onSlideChange={() => console.log()}
+      onResize={(swiper: SwiperType) => swiper.update()}
+      observer={true}
+      observeParents={true}
+      observeSlideChildren={true}
+      pagination={{
+        clickable: true,
+      }}
+      modules={[Pagination]}
+      spaceBetween={gapSlides}
+      slidesPerView={currentSlides}
     >
       <div className={styles["slider__current"]}>0{onActiveIndex + 1}/06</div>
       <div className={styles["slider__btns"]}>

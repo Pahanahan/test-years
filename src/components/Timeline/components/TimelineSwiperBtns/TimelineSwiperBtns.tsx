@@ -1,5 +1,9 @@
-// import { useSwiper } from "swiper/react";
+import { useGetWidthWindow } from "../../../../castomHooks/useGetWidthWindow";
 
+import arrowNextSmall from "../../../../assets/icons/arrow-right-small.svg";
+import arrowPrevSmall from "../../../../assets/icons/arrow-left-small.svg";
+import arrowNextSmallDisabled from "../../../../assets/icons/arrow-right-small-disabled.svg";
+import arrowPrevSmallDisabled from "../../../../assets/icons/arrow-left-small-disabled.svg";
 import arrowNext from "../../../../assets/icons/arrow-right.svg";
 import arrowPrev from "../../../../assets/icons/arrow-left.svg";
 import arrowNextDisabled from "../../../../assets/icons/arrow-right-disabled.svg";
@@ -17,7 +21,10 @@ export function SlideNextButton({
   onActiveIndex,
   onHandleChangeActiveIndex,
 }: SlideButtonProps) {
-  // const swiper = useSwiper();
+  const windowWidth: number = useGetWidthWindow();
+  const srcImage = windowWidth >= 756 ? arrowNext : arrowNextSmall;
+  const srcImageDisabled =
+    windowWidth >= 756 ? arrowNextDisabled : arrowNextSmallDisabled;
 
   return (
     <button
@@ -25,7 +32,7 @@ export function SlideNextButton({
       onClick={() => onHandleChangeActiveIndex(onActiveIndex + 1)}
       className={styles["next-btn"]}
     >
-      <img src={disabled ? arrowNextDisabled : arrowNext} alt="next" />
+      <img src={disabled ? srcImageDisabled : srcImage} alt="next" />
     </button>
   );
 }
@@ -35,7 +42,10 @@ export function SlidePrevButton({
   onActiveIndex,
   onHandleChangeActiveIndex,
 }: SlideButtonProps) {
-  // const swiper = useSwiper();
+  const windowWidth: number = useGetWidthWindow();
+  const srcImage = windowWidth >= 756 ? arrowPrev : arrowPrevSmall;
+  const srcImageDisabled =
+    windowWidth >= 756 ? arrowPrevDisabled : arrowPrevSmallDisabled;
 
   return (
     <button
@@ -43,7 +53,7 @@ export function SlidePrevButton({
       onClick={() => onHandleChangeActiveIndex(onActiveIndex - 1)}
       className={styles["prev-btn"]}
     >
-      <img src={disabled ? arrowPrevDisabled : arrowPrev} alt="prev" />
+      <img src={disabled ? srcImageDisabled : srcImage} alt="prev" />
     </button>
   );
 }

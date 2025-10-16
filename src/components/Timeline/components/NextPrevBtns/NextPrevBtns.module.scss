@@ -40,3 +40,10 @@
   opacity: 0;
   pointer-events: none;
 }
+
+@media (max-width: 1200px) {
+  .next-btn,
+  .prev-btn {
+    display: none;
+  }
+}
