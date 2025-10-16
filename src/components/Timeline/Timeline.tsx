@@ -8,7 +8,7 @@ import type { ITimeline } from "../../data/timelineData";
 import styles from "./Timeline.module.scss";
 
 function Timeline() {
-  const [activeIndex, setActiveIndex] = useState<number>(2);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
   const [rotateDeg, setRotateDeg] = useState<number>(60);
 
   const windowWidth: number = useGetWidthWindow();
