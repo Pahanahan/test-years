@@ -7,9 +7,8 @@ import type { ITimeline } from "../../data/timelineData";
 import styles from "./Timeline.module.scss";
 
 function Timeline() {
-  const [activeIndex, setActiveIndex] = useState<number>(
-    timelineData.length - 1
-  );
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [rotateDeg, setRotateDeg] = useState<number>(60);
 
   const categoriesLength = timelineData.length;
   const categoriesName = timelineData[activeIndex].category;
@@ -28,65 +27,59 @@ function Timeline() {
     ].year,
   ];
 
+  const handleChangeActiveIndex = (id: number): void => {
+    setActiveIndex(id);
+    setRotateDeg((id + 1) * 60);
+  };
+
   const timelineDataMap = timelineData.map((item, index) => {
-    const style = `rotate(${
-      (360 / timelineData.length) * index
-    }deg) translate(265px)`;
+    const angle = (360 / timelineData.length) * index;
 
-    const styleHorizonPosition = `rotate(${
-      -(360 / timelineData.length) * index
-    }deg)`;
+    const style = `rotate(${angle}deg) translate(265px)`;
 
-    if (activeIndex === index) {
-      return (
-        <button
-          onClick={() => setActiveIndex(item.id)}
-          key={item.id}
-          className={`${styles["timeline__btn"]} ${styles["timeline__btn--active"]}`}
-          style={{ transform: style }}
+    const styleHorizonPosition = `rotate(${-angle + rotateDeg}deg)`;
+
+    return (
+      <button
+        onClick={() => handleChangeActiveIndex(item.id - 1)}
+        key={item.id}
+        className={`${styles["timeline__btn"]} ${
+          activeIndex === index ? styles["timeline__btn--active"] : ""
+        }`}
+        style={{ transform: style }}
+      >
+        <div
+          className={styles["timeline__btn-number"]}
+          style={{ transform: styleHorizonPosition }}
         >
-          <div
-            className={styles["timeline__btn-number"]}
-            style={{
-              transform: styleHorizonPosition,
-            }}
+          {item.id}
+          <span
+            className={`${styles["timeline__description"]} ${
+              activeIndex === index
+                ? styles["timeline__description--active"]
+                : ""
+            }`}
           >
-            {item.id}
-            <span className={styles["timeline__description"]}>
-              {categoriesName}
-            </span>
-          </div>
-        </button>
-      );
-    } else {
-      return (
-        <button
-          onClick={() => setActiveIndex(index)}
-          key={item.category}
-          className={styles["timeline__btn"]}
-          style={{ transform: style }}
-        >
-          <div
-            className={styles["timeline__btn-number"]}
-            style={{
-              transform: styleHorizonPosition,
-            }}
-          >
-            {item.id}
-          </div>
-        </button>
-      );
-    }
+            {categoriesName}
+          </span>
+        </div>
+      </button>
+    );
   });
 
-  const activeAngle = (360 / (timelineData.length - 1)) * activeIndex;
+  const activeAngle = (360 / timelineData.length) * activeIndex;
+  const style = `rotate(${-activeAngle - 60}deg)`;
 
   return (
     <div className={styles["timeline"]}>
       <div className={styles["timeline__interactive"]}>
         <div
+          className={styles["timeline__circle-border"]}
+          style={{ transform: style }}
+        ></div>
+        <div
           className={styles["timeline__circle"]}
-          style={{ transform: `rotate(-${activeAngle}deg)` }}
+          style={{ transform: style }}
         >
           {timelineDataMap}
         </div>
@@ -103,6 +96,8 @@ function Timeline() {
         timelineDataCategoryItems={timelineDataCategoryItems}
         onActiveIndex={activeIndex}
         onSetActiveIndex={setActiveIndex}
+        // onSetRotateDeg={setRotateDeg}
+        // onHandleChangeActiveIndex={handleChangeActiveIndex}
       />
     </div>
   );

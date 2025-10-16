@@ -29,13 +29,23 @@
     }
   }
 
-  &__circle {
+  &__circle-border {
     width: 530px;
     height: 530px;
     border: 1px solid rgba(227, 230, 237, 1);
     border-radius: 50%;
-    position: relative;
-    transition: all 0.4s;
+    position: absolute;
+    transition: transform 0.4s ease;
+    z-index: 1;
+  }
+
+  &__circle {
+    width: 530px;
+    height: 530px;
+    position: absolute;
+    border-radius: 50%;
+    transition: transform 0.4s ease;
+    z-index: 3;
   }
 
   &__btn {
@@ -78,11 +88,18 @@
   &__description {
     position: absolute;
     top: 2px;
-    right: -100px;
+    padding-left: 40px;
     font-size: 20px;
     font-weight: 700;
     line-height: 30px;
     color: #42567a;
+    opacity: 0;
+
+    &--active {
+      transition: opacity 0.3s ease-in;
+      transition-delay: 0.7s;
+      opacity: 1;
+    }
   }
 
   &__title {

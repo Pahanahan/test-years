@@ -16,6 +16,8 @@ interface TimelineSwiperProps {
   categoriesLength: number;
   onActiveIndex: number;
   onSetActiveIndex: Dispatch<SetStateAction<number>>;
+  // onSetRotateDeg: Dispatch<SetStateAction<number>>;
+  // onHandleChangeActiveIndex: Dispatch<SetStateAction<number>>;
 }
 
 function TimelineSwiper({
@@ -23,7 +25,9 @@ function TimelineSwiper({
   categoriesLength,
   onActiveIndex,
   onSetActiveIndex,
-}: TimelineSwiperProps) {
+}: // onSetRotateDeg,
+// onHandleChangeActiveIndex,
+TimelineSwiperProps) {
   const disabledNext = onActiveIndex >= categoriesLength - 1 ? true : false;
   const disabledPrev = onActiveIndex <= 0 ? true : false;
 
