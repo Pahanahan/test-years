@@ -1,14 +1,19 @@
 import { useState } from "react";
 
 import TimelineSwiper from "./components/TimelineSwiper/TimelineSwiper";
+import { useGetWidthWindow } from "../../castomHooks/useGetWidthWindow";
 import { timelineData } from "../../data/timelineData";
 import type { ITimeline } from "../../data/timelineData";
 
 import styles from "./Timeline.module.scss";
 
 function Timeline() {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [activeIndex, setActiveIndex] = useState<number>(2);
   const [rotateDeg, setRotateDeg] = useState<number>(60);
+
+  const windowWidth: number = useGetWidthWindow();
+
+  const styleTranslateNumber = windowWidth >= 1200 ? 265 : 200;
 
   const categoriesLength = timelineData.length;
   const categoriesName = timelineData[activeIndex].category;
@@ -35,7 +40,7 @@ function Timeline() {
   const timelineDataMap = timelineData.map((item, index) => {
     const angle = (360 / timelineData.length) * index;
 
-    const style = `rotate(${angle}deg) translate(265px)`;
+    const style = `rotate(${angle}deg) translate(${styleTranslateNumber}px)`;
 
     const styleHorizonPosition = `rotate(${-angle + rotateDeg}deg)`;
 
