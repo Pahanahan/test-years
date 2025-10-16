@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -15,19 +14,15 @@ interface TimelineSwiperProps {
   timelineDataCategoryItems: ITimeline[];
   categoriesLength: number;
   onActiveIndex: number;
-  onSetActiveIndex: Dispatch<SetStateAction<number>>;
-  // onSetRotateDeg: Dispatch<SetStateAction<number>>;
-  // onHandleChangeActiveIndex: Dispatch<SetStateAction<number>>;
+  onHandleChangeActiveIndex: (id: number) => void;
 }
 
 function TimelineSwiper({
   timelineDataCategoryItems,
   categoriesLength,
   onActiveIndex,
-  onSetActiveIndex,
-}: // onSetRotateDeg,
-// onHandleChangeActiveIndex,
-TimelineSwiperProps) {
+  onHandleChangeActiveIndex,
+}: TimelineSwiperProps) {
   const disabledNext = onActiveIndex >= categoriesLength - 1 ? true : false;
   const disabledPrev = onActiveIndex <= 0 ? true : false;
 
@@ -57,12 +52,12 @@ TimelineSwiperProps) {
         <SlidePrevButton
           disabled={disabledPrev}
           onActiveIndex={onActiveIndex}
-          onSetActiveIndex={onSetActiveIndex}
+          onHandleChangeActiveIndex={onHandleChangeActiveIndex}
         />
         <SlideNextButton
           disabled={disabledNext}
           onActiveIndex={onActiveIndex}
-          onSetActiveIndex={onSetActiveIndex}
+          onHandleChangeActiveIndex={onHandleChangeActiveIndex}
         />
       </div>
       {timelineDataMap}
