@@ -34,7 +34,6 @@ function TimelineSwiper({
 
   const currentSlides: number = windowWidth >= 1200 ? 3 : 2;
   const gapSlides: number = windowWidth >= 1200 ? 80 : 40;
-  // const pagination: boolean = windowWidth >= 1200 ? false : true;
 
   const timelineDataMap = timelineDataCategoryItems.flatMap((item) => {
     return item.events.map((event) => {
@@ -57,10 +56,6 @@ function TimelineSwiper({
       observer={true}
       observeParents={true}
       observeSlideChildren={true}
-      // pagination={{
-      //   el: `.${styles["slider__pagination"]}`,
-      //   clickable: true,
-      // }}
       pagination={{
         clickable: true,
       }}
