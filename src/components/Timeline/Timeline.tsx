@@ -95,9 +95,7 @@ function Timeline() {
         categoriesLength={categoriesLength}
         timelineDataCategoryItems={timelineDataCategoryItems}
         onActiveIndex={activeIndex}
-        onSetActiveIndex={setActiveIndex}
-        // onSetRotateDeg={setRotateDeg}
-        // onHandleChangeActiveIndex={handleChangeActiveIndex}
+        onHandleChangeActiveIndex={handleChangeActiveIndex}
       />
     </div>
   );

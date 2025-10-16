@@ -1,5 +1,4 @@
 // import { useSwiper } from "swiper/react";
-import { Dispatch, SetStateAction } from "react";
 
 import arrowNext from "../../../../assets/icons/arrow-right.svg";
 import arrowPrev from "../../../../assets/icons/arrow-left.svg";
@@ -10,20 +9,20 @@ import styles from "./TimelineSwiperBtns.module.scss";
 interface SlideButtonProps {
   disabled: boolean;
   onActiveIndex: number;
-  onSetActiveIndex: Dispatch<SetStateAction<number>>;
+  onHandleChangeActiveIndex: (id: number) => void;
 }
 
 export function SlideNextButton({
   disabled,
   onActiveIndex,
-  onSetActiveIndex,
+  onHandleChangeActiveIndex,
 }: SlideButtonProps) {
   // const swiper = useSwiper();
 
   return (
     <button
       disabled={disabled}
-      onClick={() => onSetActiveIndex(onActiveIndex + 1)}
+      onClick={() => onHandleChangeActiveIndex(onActiveIndex + 1)}
       className={styles["next-btn"]}
     >
       <img src={disabled ? arrowNextDisabled : arrowNext} alt="next" />
@@ -34,14 +33,14 @@ export function SlideNextButton({
 export function SlidePrevButton({
   disabled,
   onActiveIndex,
-  onSetActiveIndex,
+  onHandleChangeActiveIndex,
 }: SlideButtonProps) {
   // const swiper = useSwiper();
 
   return (
     <button
       disabled={disabled}
-      onClick={() => onSetActiveIndex(onActiveIndex - 1)}
+      onClick={() => onHandleChangeActiveIndex(onActiveIndex - 1)}
       className={styles["prev-btn"]}
     >
       <img src={disabled ? arrowPrevDisabled : arrowPrev} alt="prev" />
