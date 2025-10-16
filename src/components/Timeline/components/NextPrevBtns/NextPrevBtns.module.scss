@@ -1,0 +1,42 @@
+.next-btn,
+.prev-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e3e6ed;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  position: absolute;
+  top: 240px;
+  transition: all 0.3s;
+}
+
+.next-btn {
+  right: 0;
+}
+
+.prev-btn {
+  left: 0;
+}
+
+.next-btn:hover {
+  background-color: #fff;
+}
+
+.prev-btn:hover {
+  background-color: #fff;
+}
+
+.next-btn.disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.prev-btn.disabled {
+  opacity: 0;
+  pointer-events: none;
+}

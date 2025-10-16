@@ -6,6 +6,7 @@ import {
   SlideNextButton,
   SlidePrevButton,
 } from "../TimelineSwiperBtns/TimelineSwiperBtns";
+import { NextPrevBtn } from "../NextPrevBtns/NextPrevBtns";
 import type { ITimeline } from "../../../../data/timelineData";
 
 import styles from "./TimelineSwiper.module.scss";
@@ -45,7 +46,7 @@ function TimelineSwiper({
       className={styles["slider"]}
       spaceBetween={80}
       slidesPerView={3}
-      onSlideChange={() => console.log("slide change")}
+      onSlideChange={() => console.log()}
     >
       <div className={styles["slider__current"]}>0{onActiveIndex + 1}/06</div>
       <div className={styles["slider__btns"]}>
@@ -61,6 +62,9 @@ function TimelineSwiper({
         />
       </div>
       {timelineDataMap}
+      <div className={styles["slider__nextprev-btns"]}>
+        <NextPrevBtn onActiveIndex={onActiveIndex} />
+      </div>
     </Swiper>
   );
 }

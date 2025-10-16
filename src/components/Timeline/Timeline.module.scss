@@ -1,6 +1,6 @@
 .timeline {
   margin-top: 200px;
-  padding: 170px 80px 104px;
+  padding: 170px 20px 104px;
   border: 1px solid rgba(227, 230, 237, 1);
   position: relative;
 
@@ -107,6 +107,7 @@
     font-weight: 700;
     line-height: 120%;
     color: #42567a;
+    margin-left: 60px;
     max-width: 350px;
     margin-bottom: 330px;
     position: relative;
@@ -144,5 +145,23 @@
 
   &__years-end {
     color: #ef5da8;
+  }
+}
+
+@media (max-width: 1200px) {
+  .timeline {
+    &__years {
+      font-size: 140px;
+    }
+
+    &__circle-border {
+      width: 400px;
+      height: 400px;
+    }
+
+    &__circle {
+      width: 400px;
+      height: 400px;
+    }
   }
 }
