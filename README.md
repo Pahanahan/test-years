@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# Timeline Interactive Component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Этот проект представляет собой интерактивную компоненту "Timeline" с круговой визуализацией событий и адаптивным слайдером. Задание было выполнено в рамках тестового задания компании.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Особенности
 
-### `npm start`
+- **Круговая интерактивная временная шкала**  
+  Пользователь может кликать на события и видеть их описание, год и категорию.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Слайдер событий внутри каждой категории**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  - Плавное перелистывание
+  - Кастомные стрелки навигации
+  - Пагинация для мобильных устройств
+  - Кнопки скрываются при начале и конце слайдера
 
-### `npm test`
+- **Адаптивный дизайн**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  - Desktop: полный круг, до 3 слайдов на экран
+  - Tablet: уменьшенный круг, 2 слайда на экран
+  - Mobile: скрыт круг, адаптивный слайдер с мини-кнопками
 
-### `npm run build`
+- **Гибкая кастомизация**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - Кнопки и описание событий поворачиваются автоматически для правильной ориентации текста
+  - Плавные анимации появления текста
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Технологии**
+  - React + TypeScript
+  - SCSS (модульные стили)
+  - Swiper.js для слайдера
+  - Кастомные хуки (`useGetWidthWindow`)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Установка и запуск
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Клонировать репозиторий:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+git clone https://github.com/Pahanahan/test-years
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+2. Установить зависимости:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+npm install
 
-## Learn More
+3. Запустить проект:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm start
